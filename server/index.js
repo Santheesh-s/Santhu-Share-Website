@@ -2,7 +2,6 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-
 const app = express();
 app.use(cors());
 
@@ -82,7 +81,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Ensure all other non-API routes return the React app
-app.get('/(.*)', (req, res) => {
+app.get('/*path', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
